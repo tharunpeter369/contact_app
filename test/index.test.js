@@ -3,6 +3,8 @@ var contactService = require('../services/contactServices')
 
 // note: I dont have any previous experience with writing test cases
 
+//jest test case
+
 //get all
 describe('contact service', () => {
     test('should return a list of contacts', async () => {
