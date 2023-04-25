@@ -22,6 +22,16 @@ const contactSchema = Joi.object({
 const loginuser = "tharun"
 const passwordUser = 12345
 
+// router level middleware****************
+// router.use(authenticate);
+
+// function authenticate(req, res, next) {
+//     //? Check if the user is authenticated
+//     //? If not, return a 401 Unauthorized response
+//     //? Otherwise, call next()
+//     next();
+//   }
+
 
 //jwt token sign for createing Token with fixed loginuser and password for the test
 const accesToken = jwt.sign({ username: loginuser, password: passwordUser }, "mySecretKey", { expiresIn: "10m" });
