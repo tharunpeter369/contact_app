@@ -17,12 +17,13 @@ app.use(cors())
 dotenv.config()
 
 // app.use(express.urlencoded({ extended: true }));
-// app.use(logger);
+app.use(logger);
 
-// function logger(req, res, next) {
-//   console.log(`${req.method} ${req.url}`);
-//   next();
-// }
+function logger(req, res, next) {
+  console.log(`${req.method} ${req.url}`);
+  next();
+}
+
 db()
 
 app.use('/api',contactRoute)

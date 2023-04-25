@@ -67,13 +67,9 @@ const verify = (req, res, next) => {
         })
 
         ////////////////////////////////////////////////
-        res.status(401).json("you are not authorized")
+        // res.status(401).json("you are not authorized")
     }
 }
-
-
-
-
 
 
 //jwt authentication get by login
@@ -89,8 +85,9 @@ router.post('/login', (req, res) => {
 
 
 // getting all the contacts
-router.get("/contacts", verify, (req, res) => {
-    let getContacts = contactService.getData()
+// router.get("/contacts", verify,async (req, res) => {
+router.get("/contacts", verify,async (req, res) => {
+    let getContacts =await contactService.getData()
     res.status(200).send(getContacts);
 })
 
