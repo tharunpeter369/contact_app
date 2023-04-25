@@ -31,12 +31,15 @@ const contacts = [
     }
 ];
 
+const Contact = require('./schema/contact.model')
 
 
 module.exports = {
-    
-    getData() {
-        return contacts
+
+    async getData() {
+        let data = await Contact.find()
+        return data
+        // return contacts
     },
 
     createData(body) {

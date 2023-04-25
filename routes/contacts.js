@@ -22,6 +22,16 @@ const contactSchema = Joi.object({
 const loginuser = "tharun"
 const passwordUser = 12345
 
+// router level middleware****************
+// router.use(authenticate);
+
+// function authenticate(req, res, next) {
+//     //? Check if the user is authenticated
+//     //? If not, return a 401 Unauthorized response
+//     //? Otherwise, call next()
+//     next();
+//   }
+
 
 //jwt token sign for createing Token with fixed loginuser and password for the test
 const accesToken = jwt.sign({ username: loginuser, password: passwordUser }, "mySecretKey", { expiresIn: "10m" });
@@ -57,13 +67,9 @@ const verify = (req, res, next) => {
         })
 
         ////////////////////////////////////////////////
-        res.status(401).json("you are not authorized")
+        // res.status(401).json("you are not authorized")
     }
 }
-
-
-
-
 
 
 //jwt authentication get by login
@@ -79,8 +85,9 @@ router.post('/login', (req, res) => {
 
 
 // getting all the contacts
-router.get("/contacts", verify, (req, res) => {
-    let getContacts = contactService.getData()
+// router.get("/contacts", verify,async (req, res) => {
+router.get("/contacts", verify,async (req, res) => {
+    let getContacts =await contactService.getData()
     res.status(200).send(getContacts);
 })
 
